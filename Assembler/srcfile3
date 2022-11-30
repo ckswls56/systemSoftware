@@ -1,0 +1,24 @@
+test3    start   10                                            
+first    lda     flag                                            
+         comp    two                                             
+         jeq     add2                                            
+         lda     alpha                                           
+         add     one                                             
+         sta     beta                                            
+         jsub    next                                            
+         sta     delta                                           
+add2     lda     alpha                                           
+         add     two                                             
+         sta     beta                                            
+next     lda     gamm                                            
+         sub     one                                             
+         rsub                                                    
+one      word    1                                               
+two      word    2                                               
+flag     word    1                                               
+alpha    word    5                                               
+gamm     word    10                                              
+incr     word    3                                               
+beta     resw    1                                               
+delta    resw    1                                               
+         end     first                                           

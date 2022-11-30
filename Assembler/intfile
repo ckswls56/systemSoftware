@@ -1,0 +1,23 @@
+              test1   OPCODE: start OPERAND: 1000
+001000 LABEL: first   OPCODE: lda   OPERAND: five
+001003 LABEL:         OPCODE: sta   OPERAND: alpha
+001006 LABEL:         OPCODE: lda   OPERAND: alpha
+001009 LABEL:         OPCODE: sub   OPERAND: incr
+00100C invalid opcode -----------------------------
+LABEL:         OPCODE: stastaOPERAND: beta
+00100F LABEL:         OPCODE: lda   OPERAND: gamm
+001012 LABEL:         OPCODE: add   OPERAND: four
+001015 LABEL:         OPCODE: sta   OPERAND: delta
+001018 LABEL:         OPCODE: ldch  OPERAND: charz
+00101B LABEL:         OPCODE: stch  OPERAND: c1
+00101E LABEL: four    OPCODE: word  OPERAND: 4
+001021 LABEL: five    OPCODE: word  OPERAND: 5
+001024 LABEL: one     OPCODE: word  OPERAND: 1
+001027 LABEL: alpha   OPCODE: resw  OPERAND: 1
+00102A LABEL: beta    OPCODE: resw  OPERAND: 1
+00102D LABEL: gamm    OPCODE: word  OPERAND: 11
+001030 LABEL: delta   OPCODE: resw  OPERAND: 1
+001033 LABEL: incr    OPCODE: word  OPERAND: 3
+001036 LABEL: charz   OPCODE: byte  OPERAND: c'z'
+001037 LABEL: c1      OPCODE: resb  OPERAND: 1
+                      OPCODE: end   OPERAND: first
