@@ -71,7 +71,7 @@ string hexToBinary(char c)
 // input string s return Binary string
 string hexToBinary(string s)
 {
-    //프로그램 입력용
+    // 프로그램 입력용
     string res;
 
     for (int i = 0; i < s.length(); i++)
@@ -201,45 +201,45 @@ public:
     };
     void setMem(int n)
     {
-        //현재 메모리주소에서 쓰기
+        // 현재 메모리주소에서 쓰기
         if (isVaildPointer())
             mem[mpt++] = decimalToBinary(n);
     };
     void setMem(string s)
     {
-        //현재 메모리주소에서 쓰기
+        // 현재 메모리주소에서 쓰기
         if (isVaildPointer())
             mem[mpt++] = s;
     };
     void setMem(int x, int n)
     {
-        //특정 주소 쓰기
+        // 특정 주소 쓰기
         setPointer(x);
         if (isVaildPointer())
             mem[mpt++] = decimalToBinary(n);
     };
     void setMem(int x, string s)
     {
-        //특정 주소 쓰기
+        // 특정 주소 쓰기
         setPointer(x);
         if (isVaildPointer())
             mem[mpt++] = s;
     };
     void setMemFirst(int n)
     {
-        //첫주소부터 쓰기
+        // 첫주소부터 쓰기
         setPointer(0);
         mem[mpt++] = decimalToBinary(n);
     };
     string getMem()
     {
-        //현재 메모리 주소에서 읽기
+        // 현재 메모리 주소에서 읽기
         if (isVaildPointer())
             return mem[mpt] + mem[mpt + 1];
     }
     string getMem(int x)
     {
-        //특정 주소부터 읽기
+        // 특정 주소부터 읽기
         setPointer(x);
         if (isVaildPointer())
             return mem[mpt] + mem[mpt + 1];
@@ -248,7 +248,7 @@ public:
     };
     string getMemFirst()
     {
-        //메모리 첫 주소에서부터 읽기
+        // 메모리 첫 주소에서부터 읽기
         setPointer(0);
         return mem[mpt++] + mem[mpt++];
     };
@@ -435,26 +435,24 @@ class ALU
 public:
     int add(int a, int b)
     {
-        if (a + b > 0xffff) // overflow
-            return 0xffff;  // Saturating operations
-        return a + b;
+        int res = a + b;
+        if (res > 0xffff)   // overflow
+            res %= 0x10000; // 뒷 4자리만
+        return res;
     }
     int mul(int a, int b)
     {
-        if (a * b > 0xffff)
-        {                  // overflow
-            return 0xffff; ////Saturating operations
-        }
-        return a * b;
+        int res = a * b;
+        if (res > 0xffff)   // overflow
+            res %= 0x10000; // 뒷 4자리만
+        return res;
     }
     int div(int a, int b)
     {
-        if (b == 0) // error
+        if (b == 0 || a < b) // error
         {
             return 0;
         }
-        else if (a < b)
-            return 0;
 
         return a / b;
     }
